@@ -35,7 +35,7 @@ class StoreCreditService
 
         if ($guest->total() + $sum > MAX_TOTAL)
         {
-            throw new MaxTotalExceededException('The credit total should not be more than ' . MAX_TOTAL );
+            throw new MaxTotalExceededException('The user has a max total sum of ' . MAX_TOTAL);
         }
 
         return $guest->credits()->create([
