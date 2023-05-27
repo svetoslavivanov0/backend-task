@@ -3,7 +3,6 @@
     <div class="row justify-content-center">
       <div class="col-md-8">
         <div class="card">
-          {{  formData }}
           <div class="card-header">Create Credit</div>
 
           <form @submit.prevent="handleSubmit">
@@ -44,7 +43,9 @@
             </div>
           </form>
 
-          {{ message }}
+          <div v-if="message">
+            <p>{{ message }}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -84,16 +85,6 @@ export default {
           }).catch((e) => {
         console.log(e.message)
       })
-    };
-
-    const resetForm = () => {
-      message.value = null;
-
-      formData.value = {
-        name: null,
-        sum: 1,
-        months: 1,
-      }
     };
 
     return {
