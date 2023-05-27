@@ -21,7 +21,7 @@ class CreditResource extends JsonResource
             'id' => $this->id,
             'period' => $this->months,
             'total' => $this->total,
-            'payment' => doubleval($this->total / $this->months)
+            'payment' => number_format(doubleval($this->total / $this->months), 2)
         ];
     }
 }

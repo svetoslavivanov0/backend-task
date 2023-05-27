@@ -19,13 +19,13 @@ class StoreCreditService
      */
     public function handle(CreateCreditRequest $request): Credit
     {
-        $guestName = strtolower($request->get('name'));
+        $guestName = $request->get('name');
         $sum = $request->get('sum');
         $period = $request->get('months');
 
 
         /** @var Guest $guest */
-        $guest = Guest::where('name', $guestName)->first();
+        $guest = Guest::whereRaw('LOWER(name) = ?', $guestName)->first();
 
         if (!$guest) {
             $guest = Guest::create([
