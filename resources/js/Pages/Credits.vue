@@ -19,7 +19,11 @@
         </p>
       </div>
 
-      <div class="row" v-for="credit in credits">
+      <div
+          class="row"
+          v-if="credits.length"
+          v-for="credit in credits"
+      >
         <p>
           {{ credit.name }}
         </p>
@@ -36,6 +40,8 @@
           {{ credit.payment }} bgn
         </p>
       </div>
+
+      <h2 v-else>There are no credits at the moment</h2>
 
       <div class="actions" v-if="pagination.next || pagination.prev">
         <a
@@ -59,7 +65,7 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { onMounted } from 'vue';
 import useGetAllCreditsData from '../composables/use-get-all-credits-data';
 export default {
   name: 'Credits',
