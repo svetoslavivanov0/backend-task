@@ -6,9 +6,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 /**
  * Internal dependencies
  */
-import Credits from './components/Credits.vue';
-import CreatePayment from './components/CreatePayment.vue';
-import CreateCredit from './components/CreateCredit.vue';
+import Credits from './Pages/Credits.vue';
+import CreatePayment from './Pages/CreatePayment.vue';
+import CreateCredit from './Pages/CreateCredit.vue';
 
 const routes = [
     {
