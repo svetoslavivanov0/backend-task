@@ -15,7 +15,8 @@ export default function () {
                             name: row.guest,
                             period: row.period,
                             sum: row.total,
-                            payment: row.payment
+                            payment: row.payment,
+                            id: row.uuid,
                         }
                     });
                 }
