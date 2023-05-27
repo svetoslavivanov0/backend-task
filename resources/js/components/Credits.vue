@@ -60,38 +60,19 @@
 
 <script>
 import { onMounted, ref } from 'vue';
+import useGetAllCreditsData from '../composables/use-get-all-credits-data';
 export default {
   name: 'Credits',
   setup() {
-    const credits = ref([]);
-    const pagination = ref({
-      next: null,
-      prev: null,
-    });
+    const {
+      credits,
+        fetchData,
+        pagination
+    } = useGetAllCreditsData();
 
     onMounted(() => {
       fetchData();
     })
-
-    const fetchData = (url = '/api/credits') => {
-      axios.get(url)
-          .then((fetchedData) => {
-            if(fetchedData.data.data?.length) {
-              credits.value = fetchedData.data.data.map((row) => {
-                return {
-                  name: row.guest,
-                  period: row.period,
-                  sum: row.total,
-                  payment: row.payment
-                }
-              });
-            }
-
-            pagination.value = {
-              ...fetchedData.data.links
-            };
-          })
-    }
 
     return {
       credits,
