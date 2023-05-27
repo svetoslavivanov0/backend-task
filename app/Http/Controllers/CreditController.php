@@ -10,6 +10,7 @@ use App\Models\Guest;
 use Illuminate\Support\Str;
 use App\Exceptions\MaxTotalExceededException;
 use App\Services\StoreCreditService;
+use App\DTO\CreateCreditDataTransferObject;
 
 const MAX_TOTAL = 80000;
 class CreditController
@@ -29,7 +30,13 @@ class CreditController
      */
     public function store(CreateCreditRequest $request): CreditResource
     {
-        $credit = app()->make(StoreCreditService::class)->handle($request);
+        $data = new CreateCreditDataTransferObject([
+            'name' => $request->get('name'),
+            'months' => $request->get('months'),
+            'sum' => $request->get('sum'),
+        ]);
+
+        $credit = app()->make(StoreCreditService::class)->handle($data);
 
         return CreditResource::make($credit);
     }

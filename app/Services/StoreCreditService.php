@@ -9,6 +9,7 @@ use App\Exceptions\MaxTotalExceededException;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Credit;
+use App\DTO\CreateCreditDataTransferObject;
 
 class StoreCreditService
 {
@@ -17,11 +18,11 @@ class StoreCreditService
      * @return Model
      * @throws MaxTotalExceededException
      */
-    public function handle(CreateCreditRequest $request): Credit
+    public function handle(CreateCreditDataTransferObject $data): Credit
     {
-        $guestName = $request->get('name');
-        $sum = $request->get('sum');
-        $period = $request->get('months');
+        $guestName = $data->name;
+        $sum = $data->sum;
+        $period = $data->months;
 
 
         /** @var Guest $guest */
@@ -39,7 +40,6 @@ class StoreCreditService
         }
 
         return $guest->credits()->create([
-            'sum' => $sum,
             'months' => $period,
             'total' => $sum,
             'uuid' => Str::uuid()->toString(),
