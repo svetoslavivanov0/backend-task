@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('app');
-});
-
-Route::get('{name}', function ($name) {
+Route::get('/{name?}', function () {
     return view('app');
 })->where('name', 'create-payment|create-credit');
