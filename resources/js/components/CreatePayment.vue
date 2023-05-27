@@ -52,9 +52,10 @@
 <script>
 import { ref } from 'vue';
 import axios from 'axios';
-import router from "../router";
-import { onMounted, computed } from "vue";
-import useGetAllCreditsData from "../composables/use-get-all-credits-data";
+import { onMounted } from 'vue';
+
+import useGetAllCreditsData from '../composables/use-get-all-credits-data';
+import router from '../router';
 
 export default {
   setup() {

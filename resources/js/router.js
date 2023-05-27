@@ -2,12 +2,10 @@
  * External dependencies
  */
 import { createRouter, createWebHistory } from 'vue-router';
-import { createApp } from 'vue'
 
 /**
  * Internal dependencies
  */
-import app from './app.vue';
 import Credits from './components/Credits.vue';
 import CreatePayment from './components/CreatePayment.vue';
 import CreateCredit from './components/CreateCredit.vue';
