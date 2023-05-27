@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CreditController;
+use App\Http\Controllers\CreatePaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,7 @@ use App\Http\Controllers\CreditController;
 
 Route::get('credits', [CreditController::class, 'index'])->name('credits');
 Route::post('credits', [CreditController::class, 'store'])->name('create.credit');
+Route::put('credits', CreatePaymentController::class)->name('create.payment');
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
